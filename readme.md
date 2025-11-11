@@ -13,7 +13,16 @@ while count <5:
 ```
 
 **If-else statement**
+```
+num = 14
 
+if num>10:
+    print ("more than 10")
+elif num ==0:
+    print("zero")
+else:
+    print("negative")
+```
 
 -----
 ## Chapter 2: Making a regressions 
