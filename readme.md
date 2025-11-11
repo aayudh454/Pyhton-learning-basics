@@ -51,7 +51,7 @@ def add(a, b):
 print(add(5, 7))
 ```
 
-Nested function
+***Nested function***
 ```
 def outer():
     def inner():
@@ -60,6 +60,22 @@ def outer():
     print("This is outer function.")
 
 outer()
+
+
+def outer(a, b):
+    result = a + b
+    
+    def inner(a, b):
+        result = a - b
+        print("Inner result:", result)
+    
+    # Call inner function
+    inner(a, b)
+    
+    print("Outer result:", result)
+
+# Call outer with values
+outer(10, 5)
 
 ```
 
