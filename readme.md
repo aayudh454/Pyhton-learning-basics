@@ -1,4 +1,19 @@
-## Chapter 1: Making a regressions 
+## Chapter 1: Basic function
+**Write a loop**
+```
+for i in range(10):
+    print("iterations:", i)
+```
+**While argument**
+```
+count =5
+while count <5:
+    print("count", count)
+    count +=1 
+```
+****
+
+## Chapter 2: Making a regressions 
 
 **libraries you need**
 
