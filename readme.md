@@ -25,8 +25,9 @@ else:
 ```
 #### check if a number is odd or even
 ```
-# Ask the user for a number
-num = int(input("Enter a number: "))
+import random
+num = random.randint(1, 100)
+
 
 # Check if the number is even or odd
 if num % 2 == 0:
@@ -38,10 +39,27 @@ else:
 
 **Function**
 ```
-def greet(name):
-    return f"Hello, {name}!"
+def function_name(parameters):
+    # code block
+    return value
+```
+```
+def add(a, b):
+    result = a + b
+    return result
 
-print(greet("Aayudh"))
+print(add(5, 7))
+```
+
+Nested function
+```
+def outer():
+    def inner():
+        print("This is inner function.")
+    inner()
+    print("This is outer function.")
+
+outer()
 
 ```
 
