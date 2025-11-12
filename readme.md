@@ -78,9 +78,60 @@ def outer(a, b):
 outer(10, 5)
 
 ```
+----
+## Chapter 2: NGS data analysis by Biopython
+
+**Create a fasta file**
+```
+# Step 1: Generate a small FASTA file
+from Bio.Seq import Seq
+from Bio.SeqRecord import SeqRecord
+from Bio import SeqIO
+
+records = [
+    SeqRecord(Seq("ATCGATCGATCG"), id="Seq1", description="Sample sequence 1"),
+    SeqRecord(Seq("GCTAGCTAGCTA"), id="Seq2", description="Sample sequence 2"),
+    SeqRecord(Seq("TTGACGTTGACA"), id="Seq3", description="Sample sequence 3")
+]
+
+# Write to FASTA
+SeqIO.write(records, "sample.fasta", "fasta")
+print("✅ sample.fasta created!")
+
+from random import randint
+
+def fasta_to_fastq(fasta_file, fastq_file):
+    """Convert FASTA to FASTQ by adding random quality scores."""
+    records = []
+    for record in SeqIO.parse(fasta_file, "fasta"):
+        qualities = [randint(30, 40) for _ in range(len(record.seq))]  # high-quality
+        record.letter_annotations["phred_quality"] = qualities
+        records.append(record)
+    SeqIO.write(records, fastq_file, "fastq")
+    print("✅ sample.fastq created!")
+
+fasta_to_fastq("sample.fasta", "sample.fastq")
+
+```
+**Read and Display FASTQ Information**
+
+```
+from Bio import SeqIO
+
+def read_fastq(file_path):
+    """Read FASTQ and display basic info."""
+    for record in SeqIO.parse(file_path, "fastq"):
+        print(f"ID: {record.id}")
+        print(f"Sequence: {record.seq}")
+        print(f"Quality (first 5): {record.letter_annotations['phred_quality'][:5]}")
+    print("✅ FASTQ file read complete.")
+
+read_fastq("sample.fastq")
+
+```
 
 -----
-## Chapter 2: Making a regressions 
+## Chapter 3: Making a regressions 
 
 **libraries you need**
 
