@@ -1,3 +1,12 @@
+# PYTHON BASICS by Aayudh
+
+## Table of contents    
+* [Page 1: 2025-13-11](#id-section1). Chapter 1: Basic function 
+* [Page 2: 2025-13-11](#id-section2). Chapter 2: Pandas basics
+* [Page 3: 2025-13-11](#id-section3). Chapter 3: Biopython
+* [Page 4: 2025-13-11](#id-section4). Chapter 4: Making a regressions 
+
+
 ## Chapter 1: Basic function
 **Write a loop**
 ```
@@ -140,6 +149,9 @@ merged = pd.merge(df1, df2, on="ID", how="left")
 print(merged)
 
 ## how= outer (keep all rows from both tables) or right (keep all rows from df2)
+
+#If the merge column names are different
+merged = pd.merge(df1, df2, left_on="UserID", right_on="ID", how="inner")
 ```
 
 
