@@ -116,6 +116,33 @@ df = pd.read_csv(file_path)
 filtered = df[df["Area"] > 200]
 print(filtered.head())
 ```
+#### Merging
+
+```
+import pandas as pd
+
+df1 = pd.DataFrame({
+    "ID": [1, 2, 3, 4],
+    "Name": ["Aayudh", "John", "Maria", "Sara"]
+})
+
+df2 = pd.DataFrame({
+    "ID": [1, 2, 3, 5],
+    "Score": [90, 85, 88, 92]
+})
+
+#Inner Join (keep only matching IDs)
+merged = pd.merge(df1, df2, on="ID", how="inner")
+print(merged)
+
+#Left Join (keep all rows from df1)
+merged = pd.merge(df1, df2, on="ID", how="left")
+print(merged)
+
+## how= outer (keep all rows from both tables) or right (keep all rows from df2)
+```
+
+
 #### Add a row and add the means
 
 ```
