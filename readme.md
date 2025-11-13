@@ -116,7 +116,20 @@ df = pd.read_csv(file_path)
 filtered = df[df["Area"] > 200]
 print(filtered.head())
 ```
+#### Add a row and add the means
 
+```
+# Calculate mean for each numeric column
+mean_row = df.mean(numeric_only=True)
+
+# Add a label to the row index
+mean_row.name = "AVERAGE"
+
+# Append the row to the dataframe
+df_with_mean = pd.concat([df, mean_row.to_frame().T], ignore_index=False)
+
+print(df_with_mean)
+```
 ----
 ## Chapter 3: Biopython
 
