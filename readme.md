@@ -259,6 +259,7 @@ count_variants_mock()
 
 <div id='id-section4'/>
 -----
+    
 ## Chapter 4: Making a regressions 
 
 **libraries you need**
