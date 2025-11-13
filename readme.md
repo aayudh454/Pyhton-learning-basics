@@ -113,7 +113,7 @@ def fasta_to_fastq(fasta_file, fastq_file):
 fasta_to_fastq("sample.fasta", "sample.fastq")
 
 ```
-**Read and Display FASTQ Information**
+#### Read and Display FASTQ Information
 
 ```
 from Bio import SeqIO
@@ -127,6 +127,50 @@ def read_fastq(file_path):
     print("✅ FASTQ file read complete.")
 
 read_fastq("sample.fastq")
+
+```
+#### Filter Reads by Average Quality
+
+```
+def filter_by_quality(input_file, output_file, min_quality=35):
+    """Filter FASTQ reads by quality."""
+    from Bio import SeqIO
+    good_reads = []
+    for record in SeqIO.parse(input_file, "fastq"):
+        avg_qual = sum(record.letter_annotations["phred_quality"]) / len(record)
+        if avg_qual >= min_quality:
+            good_reads.append(record)
+    SeqIO.write(good_reads, output_file, "fastq")
+    print(f"✅ Filtered {len(good_reads)} reads saved to {output_file}")
+
+filter_by_quality("sample.fastq", "filtered.fastq")
+
+```
+
+**Count Reads**
+```
+def count_reads(fastq_file):
+    count = sum(1 for _ in SeqIO.parse(fastq_file, "fastq"))
+    print(f"📊 Total reads in {fastq_file}: {count}")
+    return count
+
+count_reads("filtered.fastq")
+```
+```
+# Simulate mapping stats
+def mapping_stats_mock():
+    total = 1000
+    mapped = 950
+    print(f"📈 Total reads: {total}, Mapped reads: {mapped}, Mapping rate: {mapped/total*100:.2f}%")
+
+mapping_stats_mock()
+
+# Simulate variant count
+def count_variants_mock():
+    variants = 42
+    print(f"🧬 Total variants found: {variants}")
+
+count_variants_mock()
 
 ```
 
