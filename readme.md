@@ -81,37 +81,38 @@ outer(10, 5)
 ----
 ## Chapter 2: NGS data analysis by Biopython
 
-**Create a fasta file**
+#### Simple sequencing stuff
+
 ```
-# Step 1: Generate a small FASTA file
 from Bio.Seq import Seq
-from Bio.SeqRecord import SeqRecord
+my_seq = Seq("ATAGATC")
+my_seq_compliment = my_seq.complement()
+my_seq.reverse_complement()
+print(my_seq_compliment)
+print(my_seq[0]) 
+```
+
+```
+from Bio.Seq import Seq
+my_seq = Seq("GATCG")
+for index, letter in enumerate(my_seq):
+    print("%i %s" % (index, letter))
+```
+
+#### Load a fasta file and read different 
+```
 from Bio import SeqIO
 
-records = [
-    SeqRecord(Seq("ATCGATCGATCG"), id="Seq1", description="Sample sequence 1"),
-    SeqRecord(Seq("GCTAGCTAGCTA"), id="Seq2", description="Sample sequence 2"),
-    SeqRecord(Seq("TTGACGTTGACA"), id="Seq3", description="Sample sequence 3")
-]
+# Path to your FASTA file
+file_path = r"C:\Users\Aayudh\Downloads\ls_orchid.fasta.txt"
 
-# Write to FASTA
-SeqIO.write(records, "sample.fasta", "fasta")
-print("✅ sample.fasta created!")
-
-from random import randint
-
-def fasta_to_fastq(fasta_file, fastq_file):
-    """Convert FASTA to FASTQ by adding random quality scores."""
-    records = []
-    for record in SeqIO.parse(fasta_file, "fasta"):
-        qualities = [randint(30, 40) for _ in range(len(record.seq))]  # high-quality
-        record.letter_annotations["phred_quality"] = qualities
-        records.append(record)
-    SeqIO.write(records, fastq_file, "fastq")
-    print("✅ sample.fastq created!")
-
-fasta_to_fastq("sample.fasta", "sample.fastq")
-
+# Read and display information
+for record in SeqIO.parse(file_path, "fasta"):
+    print(f"ID: {record.id}")
+    print(f"Description: {record.description}")
+    print(f"Sequence length: {len(record.seq)}")
+    print(f"Sequence (first 100 bases): {record.seq[:100]}")
+    print("-" * 50)
 ```
 #### Read and Display FASTQ Information
 
