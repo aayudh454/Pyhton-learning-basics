@@ -8,6 +8,7 @@
 
 ------
 <div id='id-section1'/>
+    
 ## Chapter 1: Basic function
 **Write a loop**
 ```
@@ -91,6 +92,7 @@ outer(10, 5)
 
 ------
 <div id='id-section2'/>
+    
 ## Chapter 2: Pandas basics
 ```
 import pandas as pd
@@ -171,7 +173,10 @@ df_with_mean = pd.concat([df, mean_row.to_frame().T], ignore_index=False)
 
 print(df_with_mean)
 ```
-----
+
+------
+<div id='id-section3'/>
+
 ## Chapter 3: Biopython
 
 #### Simple sequencing stuff
@@ -252,6 +257,7 @@ count_variants_mock()
 
 ```
 
+<div id='id-section4'/>
 -----
 ## Chapter 4: Making a regressions 
 
