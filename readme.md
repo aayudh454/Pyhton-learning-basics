@@ -6,7 +6,8 @@
 * [Page 3: 2025-13-11](#id-section3). Chapter 3: Biopython
 * [Page 4: 2025-13-11](#id-section4). Chapter 4: Making a regressions 
 
-
+------
+<div id='id-section1'/>
 ## Chapter 1: Basic function
 **Write a loop**
 ```
@@ -88,7 +89,8 @@ outer(10, 5)
 
 ```
 
-----
+------
+<div id='id-section2'/>
 ## Chapter 2: Pandas basics
 ```
 import pandas as pd
