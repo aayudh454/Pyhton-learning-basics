@@ -78,8 +78,37 @@ def outer(a, b):
 outer(10, 5)
 
 ```
+
 ----
-## Chapter 2: NGS data analysis by Biopython
+## Chapter 2: Pandas basics
+```
+import pandas as pd
+
+# Create a simple sales dataset
+data = {
+    "Product": ["A", "B", "C", "A", "B", "C"],
+    "Region": ["North", "South", "East", "West", "North", "South"],
+    "Sales": [200, 150, 300, 250, 180, 220],
+    "Month": ["Jan", "Jan", "Jan", "Feb", "Feb", "Feb"]
+}
+
+df = pd.DataFrame(data)
+print(df)
+```
+#### Inspect the Data
+```
+#Get summary info
+print(df.info())
+
+# Show statistics
+print(df.describe())
+```
+**.info() → shows columns, data types, and non-null counts.**
+
+**.describe() → gives quick stats for numeric columns (mean, std, min, max, etc.).**
+
+----
+## Chapter 3: Biopython
 
 #### Simple sequencing stuff
 
@@ -99,7 +128,7 @@ for index, letter in enumerate(my_seq):
     print("%i %s" % (index, letter))
 ```
 
-#### Load a fasta file and read different 
+#### Load a fasta file and Display FASTQ Information
 ```
 from Bio import SeqIO
 
@@ -113,22 +142,6 @@ for record in SeqIO.parse(file_path, "fasta"):
     print(f"Sequence length: {len(record.seq)}")
     print(f"Sequence (first 100 bases): {record.seq[:100]}")
     print("-" * 50)
-```
-#### Read and Display FASTQ Information
-
-```
-from Bio import SeqIO
-
-def read_fastq(file_path):
-    """Read FASTQ and display basic info."""
-    for record in SeqIO.parse(file_path, "fastq"):
-        print(f"ID: {record.id}")
-        print(f"Sequence: {record.seq}")
-        print(f"Quality (first 5): {record.letter_annotations['phred_quality'][:5]}")
-    print("✅ FASTQ file read complete.")
-
-read_fastq("sample.fastq")
-
 ```
 #### Filter Reads by Average Quality
 
@@ -176,7 +189,7 @@ count_variants_mock()
 ```
 
 -----
-## Chapter 3: Making a regressions 
+## Chapter 4: Making a regressions 
 
 **libraries you need**
 
