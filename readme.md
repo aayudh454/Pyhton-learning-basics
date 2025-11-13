@@ -107,6 +107,16 @@ print(df.describe())
 
 **.describe() → gives quick stats for numeric columns (mean, std, min, max, etc.).**
 
+#### Subseting 
+
+```
+file_path = r"C:\Users\Aayudh\Downloads\Results_DVL-083025_20250905-00001.csv"
+df = pd.read_csv(file_path)
+
+filtered = df[df["Area"] > 200]
+print(filtered.head())
+```
+
 ----
 ## Chapter 3: Biopython
 
