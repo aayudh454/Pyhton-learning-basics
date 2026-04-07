@@ -62,6 +62,17 @@ def add(a, b):
 print(add(5, 7))
 ```
 
+```
+def gc(seq):
+  gc_cont = seq.count("G") + seq.count("C")
+  total_lenth = len(seq)
+  return (gc_cont/total_lenth)*100
+
+seq="ATCGATCGATCG"
+print(gc(seq))
+
+```
+
 ***Nested function***
 ```
 def outer():
