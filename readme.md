@@ -126,7 +126,8 @@ print(df.info())
 
 # Show statistics
 print(df.describe())
-
+```
+```
 ##COunt NA
 df.isna().sum()
 
