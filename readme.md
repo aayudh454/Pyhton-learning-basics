@@ -132,8 +132,6 @@ print(df.describe())
 df.isna().sum()
 
 ###Correlation
-
-```
 df.corr(Numeric_only=TRUE)
 ```
 
