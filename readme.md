@@ -126,6 +126,16 @@ print(df.info())
 
 # Show statistics
 print(df.describe())
+
+##COunt NA
+df.isna().sum()
+
+###Correlation
+
+```
+df.corr(Numeric_only=TRUE)
+```
+
 ```
 **.info() → shows columns, data types, and non-null counts.**
 
