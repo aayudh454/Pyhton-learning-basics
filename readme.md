@@ -139,6 +139,43 @@ df.corr(Numeric_only=TRUE)
 **.info() → shows columns, data types, and non-null counts.**
 
 **.describe() → gives quick stats for numeric columns (mean, std, min, max, etc.).**
+```
+#### Statistical Comparison: Cases vs Controls
+
+This analysis compares biomarker levels between disease **cases** and **controls** using both parametric and non-parametric statistical tests.
+
+```
+import numpy as np
+from scipy.stats import ttest_ind, mannwhitneyu
+
+cases = df.loc[df["disease_status"] == 1, "biomarker_level"]
+controls = df.loc[df["disease_status"] == 0, "biomarker_level"]
+
+# T-test
+t_stat, t_p = ttest_ind(cases, controls, equal_var=False, nan_policy="omit")
+print("T-test p-value:", t_p)
+
+# Clean data
+cases_clean = cases.dropna()
+controls_clean = controls.dropna()
+
+# Mann-Whitney
+u_stat, u_p = mannwhitneyu(cases_clean, controls_clean, alternative="two-sided")
+print("Mann-Whitney p-value:", u_p)
+
+# Medians
+print("Case median:", np.median(cases_clean))
+print("Control median:", np.median(controls_clean))
+```
+---
+
+## 📊 Data Subsetting
+
+We first split the dataset into two groups:
+
+```python
+cases = df.loc[df["disease_status"] == 1, "biomarker_level"]
+controls = df.loc[df["disease_status"] == 0, "biomarker_level"]
 
 #### Subseting 
 
