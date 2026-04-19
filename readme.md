@@ -238,7 +238,7 @@ We first split the dataset into two groups:
 ```python
 cases = df.loc[df["disease_status"] == 1, "biomarker_level"]
 controls = df.loc[df["disease_status"] == 0, "biomarker_level"]
-
+```
 #### Subseting 
 
 ```
