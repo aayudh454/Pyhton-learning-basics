@@ -120,26 +120,81 @@ df = pd.DataFrame(data)
 print(df)
 ```
 #### Inspect the Data
-```
-#Get summary info
-print(df.info())
 
+#Get summary info
+```
+print(df.info())
+```
 # Show statistics
+```
 print(df.describe())
 ```
-```
-##COunt NA
-df.isna().sum()
+##### Make a mock clinical data
 
-###Correlation
+```
+import pandas as pd
+from io import StringIO
+
+csv_data = """patient_id,age,sex,disease_status,biomarker_level,treatment_group,survival_time,event
+1,65,M,1,8.2,A,320,1
+2,54,F,0,3.1,B,450,0
+3,70,M,1,9.5,A,210,1
+4,45,F,0,2.8,B,500,0
+5,60,M,1,7.9,A,300,1
+6,50,F,0,3.5,A,480,0
+7,72,M,1,10.2,B,180,1
+8,38,F,0,2.1,B,520,0
+9,67,M,1,8.8,A,250,1
+10,49,F,0,3.0,A,470,0
+11,62,M,1,7.5,B,310,1
+12,55,F,0,,B,490,0
+13,68,M,1,9.1,A,220,1
+14,43,F,0,2.4,A,510,0
+15,59,M,1,8.0,B,330,1
+16,52,F,0,3.3,A,460,0
+17,75,M,1,10.5,B,150,1
+18,40,F,0,2.0,A,530,0
+19,66,M,1,8.6,A,260,1
+20,48,F,0,,B,480,0
+21,63,M,1,7.8,A,310,1
+22,57,F,0,3.6,B,450,0
+23,69,M,1,9.7,A,200,1
+24,44,F,0,2.7,A,500,0
+25,61,M,1,8.1,B,320,1
+26,53,F,0,3.2,A,470,0
+27,71,M,1,10.0,B,170,1
+28,39,F,0,2.2,B,520,0
+29,64,M,1,8.4,A,280,1
+30,47,F,0,3.1,A,490,0
+31,58,M,1,7.6,B,340,1
+32,51,F,0,3.4,A,460,0
+33,73,M,1,10.3,B,160,1
+34,42,F,0,2.5,B,510,0
+35,60,M,1,8.3,A,300,1
+36,54,F,0,3.0,A,480,0
+37,68,M,1,9.2,B,230,1
+38,46,F,0,2.9,B,500,0
+39,65,M,1,8.7,A,270,1
+40,49,F,0,3.3,A,470,0
+"""
+
+df = pd.read_csv(StringIO(csv_data))
+df.head()
+```
+## Count NA
+```
+df.isna().sum()
+```
+
+### Correlation
+```
 df.corr(Numeric_only=TRUE)
 ```
 
-```
 **.info() → shows columns, data types, and non-null counts.**
 
 **.describe() → gives quick stats for numeric columns (mean, std, min, max, etc.).**
-```
+
 #### T test
 
 This analysis compares biomarker levels between disease **cases** and **controls** using both parametric and non-parametric statistical tests.
@@ -150,6 +205,7 @@ from scipy.stats import ttest_ind
 t_stat, p_value = ttest_ind(df["column1"], df["column2"], nan_policy="omit")
 print(p_value)
 ```
+#### Detailed version 
 ```
 import numpy as np
 from scipy.stats import ttest_ind, mannwhitneyu
