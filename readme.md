@@ -4,7 +4,8 @@
 * [Page 1: 2025-13-11](#id-section1). Chapter 1: Basic function 
 * [Page 2: 2025-13-11](#id-section2). Chapter 2: Pandas basics
 * [Page 3: 2025-13-11](#id-section3). Chapter 3: Biopython
-* [Page 4: 2025-13-11](#id-section4). Chapter 4: Making a regressions 
+* [Page 4: 2025-13-11](#id-section4). Chapter 4: Making a regressions
+* [Page 5: 2026-19-04](#id-section4). Chapter 5: Machine learning
 
 ------
 <div id='id-section1'/>
@@ -428,4 +429,94 @@ plt.text(
 )
 
 plt.show()
+```
+<div id='id-section5'/>
+-----
+    
+## Chapter 5: Machine learning (ML)
+
+# 🌲 Random Forest (Simple Example)
+
+## 📌 What is Random Forest?
+
+Random Forest is a machine learning model that:
+- Builds many decision trees  
+- Each tree makes a prediction  
+- Final answer = majority vote  
+
+Used mainly for classification problems.
+
+---
+
+## 📊 Example Dataset: Iris
+
+The dataset contains:
+- Sepal length  
+- Sepal width  
+- Petal length  
+- Petal width  
+
+Goal: predict flower type:
+- Setosa  
+- Versicolor  
+- Virginica  
+
+---
+
+## 🧠 Full Code
+
+```python
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score
+
+iris = load_iris()
+X = iris.data
+y = iris.target
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
+
+model = RandomForestClassifier(n_estimators=100, random_state=42)
+model.fit(X_train, y_train)
+
+y_pred = model.predict(X_test)
+
+accuracy = accuracy_score(y_test, y_pred)
+print("Accuracy:", accuracy)
+
+sample = [[5.1, 3.5, 1.4, 0.2]]
+prediction = model.predict(sample)
+
+print("Predicted class:", prediction)
+print("Predicted flower:", iris.target_names[prediction[0]])
+```
+
+---
+
+## ⚡ Minimal Version
+
+```python
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+
+iris = load_iris()
+X_train, X_test, y_train, y_test = train_test_split(iris.data, iris.target)
+
+model = RandomForestClassifier()
+model.fit(X_train, y_train)
+
+print(model.predict(X_test))
+```
+
+---
+
+## ✅ Key Lines
+
+```python
+model.fit(X_train, y_train)
+model.predict(X_test)
 ```
