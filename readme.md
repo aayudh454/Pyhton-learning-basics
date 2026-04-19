@@ -477,22 +477,25 @@ iris = load_iris()
 X = iris.data
 y = iris.target
 ```
-#### Train-Test Split
+#### Step 3: split data- Train-Test Split
 80% → training
 20% → testing
 ```
-# Step 3: split data
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=42
 )
+```
 
-# Step 4: create model
+# Step 4: create model (Builds 100 decision trees)
+```
 model = RandomForestClassifier(n_estimators=100, random_state=42)
-
-# Step 5: train model
+```
+# Step 5: train model (Model learns patterns from data)
+```
 model.fit(X_train, y_train)
-
-# Step 6: predict
+```
+```
+# Step 6: predict (Model predicts unseen data)
 y_pred = model.predict(X_test)
 
 # Step 7: evaluate
