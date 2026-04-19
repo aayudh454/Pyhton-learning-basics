@@ -435,6 +435,8 @@ plt.show()
     
 ## Chapter 5: Machine learning (ML)
 
+https://colab.research.google.com/github/aayudh454/Pyhton-learning-basics/blob/main/random_forest_colab.ipynb
+
 # 🌲 Random Forest (Simple Example)
 
 ## 📌 What is Random Forest?
