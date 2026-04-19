@@ -486,23 +486,26 @@ X_train, X_test, y_train, y_test = train_test_split(
 )
 ```
 
-# Step 4: create model (Builds 100 decision trees)
+#### Step 4: create model (Builds 100 decision trees)
 ```
 model = RandomForestClassifier(n_estimators=100, random_state=42)
 ```
-# Step 5: train model (Model learns patterns from data)
+#### Step 5: train model (Model learns patterns from data)
 ```
 model.fit(X_train, y_train)
 ```
-```
-# Step 6: predict (Model predicts unseen data)
-y_pred = model.predict(X_test)
 
-# Step 7: evaluate
+#### Step 6: predict (Model predicts unseen data)
+```
+y_pred = model.predict(X_test)
+```
+#### Step 7: evaluate (Compares prediction vs actual values)
+```
 accuracy = accuracy_score(y_test, y_pred)
 print("Accuracy:", accuracy)
-
-# Step 8: predict one sample
+```
+#### Step 8: predict one sample (Predicts class for a new sample)
+```
 sample = [[5.1, 3.5, 1.4, 0.2]]
 prediction = model.predict(sample)
 
