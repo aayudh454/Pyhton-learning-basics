@@ -140,10 +140,16 @@ df.corr(Numeric_only=TRUE)
 
 **.describe() → gives quick stats for numeric columns (mean, std, min, max, etc.).**
 ```
-#### Statistical Comparison: Cases vs Controls
+#### T test
 
 This analysis compares biomarker levels between disease **cases** and **controls** using both parametric and non-parametric statistical tests.
 
+```
+from scipy.stats import ttest_ind
+
+t_stat, p_value = ttest_ind(df["column1"], df["column2"], nan_policy="omit")
+print(p_value)
+```
 ```
 import numpy as np
 from scipy.stats import ttest_ind, mannwhitneyu
