@@ -466,27 +466,36 @@ Goal: predict flower type:
 ## 🧠 Full Code
 
 ```python
+# Step 1: import libraries
 from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 
+# Step 2: load dataset
 iris = load_iris()
 X = iris.data
 y = iris.target
 
+# Step 3: split data
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=42
 )
 
+# Step 4: create model
 model = RandomForestClassifier(n_estimators=100, random_state=42)
+
+# Step 5: train model
 model.fit(X_train, y_train)
 
+# Step 6: predict
 y_pred = model.predict(X_test)
 
+# Step 7: evaluate
 accuracy = accuracy_score(y_test, y_pred)
 print("Accuracy:", accuracy)
 
+# Step 8: predict one sample
 sample = [[5.1, 3.5, 1.4, 0.2]]
 prediction = model.predict(sample)
 
