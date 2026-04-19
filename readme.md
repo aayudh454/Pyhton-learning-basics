@@ -5,7 +5,7 @@
 * [Page 2: 2025-13-11](#id-section2). Chapter 2: Pandas basics
 * [Page 3: 2025-13-11](#id-section3). Chapter 3: Biopython
 * [Page 4: 2025-13-11](#id-section4). Chapter 4: Making a regressions
-* [Page 5: 2026-19-04](#id-section4). Chapter 5: Machine learning
+* [Page 5: 2026-19-04](#id-section5). Chapter 5: Machine learning
 
 ------
 <div id='id-section1'/>
